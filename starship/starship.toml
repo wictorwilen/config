@@ -88,8 +88,9 @@ format = '[ $user ]($style)'
 [directory]
 style = "fg:color_fg1 bg:color_yellow"
 format = "[ $path ]($style)"
-truncation_length = 3
+truncation_length = 100
 truncation_symbol = "…/"
+truncate_to_repo = false
 
 [directory.substitutions]
 "Documents" = "󰈙 "
@@ -97,6 +98,11 @@ truncation_symbol = "…/"
 "Music" = "󰝚 "
 "Pictures" = " "
 "code" = "󰲋 "
+"github" = " "
+"node_modules" = " "
+".git" = "󰊢 "
+"src" = " "
+"dist" = " "
 
 [git_branch]
 symbol = ""
