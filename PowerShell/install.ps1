@@ -21,16 +21,19 @@ foreach ($package in $packages) {
     }
 }
 
-$profileDirectory = Split-Path -Parent $PROFILE.CurrentUserAllHosts
+$documents = [Environment]::GetFolderPath('MyDocuments')
+$targetProfilePath = if ($PSVersionTable.PSVersion.Major -ge 7) { $PROFILE.CurrentUserAllHosts } else { Join-Path $documents 'PowerShell\profile.ps1' }
+
+$profileDirectory = Split-Path -Parent $targetProfilePath
 New-Item -ItemType Directory -Path $profileDirectory -Force | Out-Null
 
-if (Test-Path $PROFILE.CurrentUserAllHosts) {
-    $backupPath = "$($PROFILE.CurrentUserAllHosts).backup-$(Get-Date -Format 'yyyyMMddHHmmss')"
-    Copy-Item $PROFILE.CurrentUserAllHosts $backupPath
+if (Test-Path $targetProfilePath) {
+    $backupPath = "$targetProfilePath.backup-$(Get-Date -Format 'yyyyMMddHHmmss')"
+    Copy-Item $targetProfilePath $backupPath
     Write-Host "Existing profile backed up to $backupPath"
 }
 
-Copy-Item (Join-Path $PSScriptRoot 'profile.ps1') $PROFILE.CurrentUserAllHosts -Force
+Copy-Item (Join-Path $PSScriptRoot 'profile.ps1') $targetProfilePath -Force
 
 $starshipDirectory = Join-Path $HOME '.config'
 New-Item -ItemType Directory -Path $starshipDirectory -Force | Out-Null
