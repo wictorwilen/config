@@ -43,11 +43,11 @@ The prompt uses symbols that require **CaskaydiaCove Nerd Font**.
 4. Under **Defaults > Appearance**, select
    **CaskaydiaCove Nerd Font**.
 
-Alternatively, merge
-[`terminal-profile-defaults.jsonc`](terminal-profile-defaults.jsonc) into the
-`profiles` section of Windows Terminal's `settings.json`. Do not replace the
-complete settings file, because generated WSL and Visual Studio profiles vary
-between machines.
+Alternatively, merge the `profiles.defaults` settings from
+[`terminal-profile-defaults.jsonc`](terminal-profile-defaults.jsonc) into
+Windows Terminal's `settings.json` (the root-level `profiles` object). Do not
+replace the complete settings file, because generated WSL and Visual Studio
+profiles vary between machines.
 
 ## Files intentionally not synchronized
 
