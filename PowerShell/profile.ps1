@@ -8,6 +8,6 @@ else {
     Write-Warning 'Starship is not installed. Run PowerShell\install.ps1 from the config repository.'
 }
 
-if ($Host.UI.SupportsVirtualTerminal -and -not [Console]::IsOutputRedirected) {
+if ($Host.UI.SupportsVirtualTerminal -and -not [Console]::IsOutputRedirected -and (Get-Command Set-PSReadLineOption -ErrorAction SilentlyContinue)) {
     Set-PSReadLineOption -PredictionSource History -PredictionViewStyle InlineView -BellStyle None
 }
