@@ -1,0 +1,10 @@
+{
+    "profiles": {
+        "defaults": {
+            "colorScheme": "One Half Dark",
+            "font": {
+                "face": "CaskaydiaCove Nerd Font"
+            }
+        }
+    }
+}
